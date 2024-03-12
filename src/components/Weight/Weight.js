@@ -17,7 +17,7 @@ const Weight = ({ updateUserData }) => {
   const handleWeightNextClick = () => {
     if (selectedWeight.trim() !== '') {
       updateUserData({ weight: selectedWeight });
-      navigate('/infopage');
+      navigate('/homepage');
     } else {
       alert('Please enter a valid weight.');
     }

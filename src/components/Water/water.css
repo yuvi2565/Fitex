@@ -1,0 +1,63 @@
+.waterTracker {
+    text-align: center;
+    padding: 2vh;
+    border-radius: 0.8vh;
+    box-shadow: 0 0 1vw rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    width: 80vw;
+    max-width: 600px; /* Adjust as needed */
+  }
+  
+  .waterTitle {
+    color: #333;
+    margin-bottom: 1vh;
+  }
+  
+  .waterText, .waterDailyGoal, .waterTotalConsumed, .waterRemaining {
+    color: #555;
+    margin-bottom: 1vh;
+  }
+  
+  .waterGoalInput, .waterRadioInput {
+    padding: 1vh;
+    border-radius: 1vh;
+    margin: 0.5vh 0;
+  }
+  
+  .waterSetGoalButton, .waterAddWaterButton {
+    background-color: #008CBA;
+    color: white;
+    padding: 1vh 1.5vh;
+    border: none;
+    border-radius: 0.5vh;
+    cursor: pointer;
+    font-size: 1.2vh;
+    margin-top: 1vh;
+  }
+  
+  .waterSetGoalButton:hover, .waterAddWaterButton:hover {
+    background-color: #005b7f;
+  }
+  
+  .waterAmountDiv {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .waterLabel {
+    cursor: pointer;
+    padding: 1vh;
+    margin: 0.5vh;
+    background-color: #4caf50;
+    color: white;
+    border-radius: 0.5vh;
+    transition: background-color 0.3s;
+  }
+  
+  .waterFieldset {
+    border-radius: 1vh;
+    margin: 1vh;
+    padding: 1vh;
+  }
+  

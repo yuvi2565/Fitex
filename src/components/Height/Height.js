@@ -25,11 +25,12 @@ const Height = ({ updateUserData }) => {
   };
 
   const handleHeightNextClick = () => {
-    const defaultHeight = 'Height: 1 feet 0 inches';
-    const currentHeight = `Height: ${feet} feet ${inches} inches`;
+    const defaultHeight = 0;
+    const currentHeightFeet = feet;
+    const currentHeightInches = inches;
 
-    if (currentHeight !== defaultHeight) {
-      updateUserData({ height: currentHeight });
+    if (currentHeightFeet !== defaultHeight) {
+      updateUserData({ heightFeet: currentHeightFeet,heightInches:currentHeightInches });
       navigate('/weight');
     } else {
       alert('Please enter a valid height.');
