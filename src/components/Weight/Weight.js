@@ -1,12 +1,32 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './weight.css';
 
-const Weight = ({ updateUserData }) => {
+const Weight = (props) => {
   const [selectedWeight, setSelectedWeight] = useState('');
   const [weightText, setWeightText] = useState('Select Weight');
   const [textColor, setTextColor] = useState('var(--primary-color)');
   const navigate = useNavigate();
+
+  var bmi = 0;
+  let bmiStage = '';
+  const calculateBMI = () => {
+    const { heightFeet, heightInches } = props.userData;
+    const currentWeight = parseFloat(selectedWeight);
+    if (currentWeight!=0) {
+      const heightInMeters = ((parseFloat(heightFeet) * 12 + parseFloat(heightInches))*0.0254).toFixed(1);
+      bmi = parseFloat(currentWeight / ((heightInMeters) * (heightInMeters))).toFixed(1);
+      
+      console.log(heightInMeters,bmi);
+      if (bmi < 18.5) bmiStage = 'Underweight';
+      else if (bmi >= 18.5 && bmi <= 24.9) bmiStage = 'Normal';
+      else if (bmi >= 25 && bmi <= 29.9) bmiStage = 'Pre-obesity';
+      else if (bmi >= 30 && bmi <= 34.9) bmiStage = 'Obesity Class 1';
+      else if (bmi >= 35 && bmi <= 39.9) bmiStage = 'Obesity Class 2';
+      else bmiStage = 'Obesity Class 3';
+
+    }
+  };
 
   const handleWeightChange = (event) => {
     setSelectedWeight(event.target.value);
@@ -16,7 +36,8 @@ const Weight = ({ updateUserData }) => {
 
   const handleWeightNextClick = () => {
     if (selectedWeight.trim() !== '') {
-      updateUserData({ weight: selectedWeight });
+      calculateBMI();
+      props.updateUserData({ currentBmi: bmi, currentBmiStage: bmiStage ,currentWeight: selectedWeight });
       navigate('/homepage');
     } else {
       alert('Please enter a valid weight.');
@@ -39,7 +60,7 @@ const Weight = ({ updateUserData }) => {
         <label> kg</label>
       </div>
       <div className='WeightNext'>
-        <button onClick={handleWeightNextClick}><img/></button>
+      <button onClick={handleWeightNextClick}><img/></button>
       </div>
     </div>
   );
