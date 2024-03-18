@@ -24,7 +24,7 @@ function App() {
     heightInches: 4,
     currentWeight: 54,
     weightGoal: 65,
-    currentWater:2000,
+    currentWater:0,
     waterGoal:3000,
     currentwaterStreak:10,
     currentSanpStreak:25,
